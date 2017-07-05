@@ -3,16 +3,16 @@ body {
     background-color:green;
 }
 
-h1 {
+h2{color {
     color: navy;
-    margin-left: 20px;
+    margin-left: 50px;
 	background-color:red;
 }
 p{color:blue;}
 h2{color:red;background-color:black;}
 img.opacity {
 	opacity: 1;
-	filter: alpha(opacity=50);
+	filter: alpha(opacity=70);
 	}	
 	
 img.opacity:hover {
