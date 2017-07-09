@@ -1,0 +1,33 @@
+h2 {
+    text-decoration: line-through;
+}
+
+h3 {
+    text-decoration: underline;
+}
+
+ /* The animation code */
+@keyframes example {
+    from {background-color:black;}
+    to {background-color: white;}
+}
+
+
+
+   h4 {
+  background-color:black;
+ -webkit-animation-name: example;
+ -webkit-animation-duration: 1s;
+ -webkit-animation-iteration-count: 10;
+ -webkit-animation-direction: alternate;
+ -webkit-animation-timing-function: ease-in;
+ -webkit-animation-fill-mode: forwards;
+ -webkit-animation-delay: 2s;
+}
+
+	
+	
+	body{
+		background-color:#dbffde;
+		 padding-bottom:10px;
+	}
