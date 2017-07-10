@@ -8,7 +8,7 @@ function prime()
 	  var count=0;
 	  if(x>=y)
 	  {
-		  document.write("all prime numbers between", y ,"and", x ,"are :");
+		  document.write("all prime numbers between ", y ," and ", x ," are :");
 		for(i=y;i<=x;i++)
 		{
 			count=0;

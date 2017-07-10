@@ -1,6 +1,6 @@
 
 var ary=[45,67,34,21,9];
-
+document.write("Given Array<br>");
 for( var i = 0; i < ary.length; i++ ){
     document.write("<br>", parseInt( ary[i], 10 )); //don't forget to add the base
 }
