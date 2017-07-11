@@ -2,7 +2,7 @@
    
     while(1){
 	    var a=prompt(" Enter a number or type 'quit' to exit ");
-		if(a=='quit')
+		if(a==null)
 		{
 			break;
 		}
@@ -12,6 +12,7 @@
 			 document.write("<br>" ,a*i);
 		 }
 		 document.write("<br><br>");
+		 
 }	
 	
 
