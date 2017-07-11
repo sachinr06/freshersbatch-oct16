@@ -1,19 +1,39 @@
 header {
 	text-align:center;
-	font-family: 'Script MT Bold',Serif;
-        font-size: 48px;
+	color:white;
+    font-size: 58px;
+	font-family:'OCR A Extended';
 } 
+.navbar-default {
+
+  background-image: none;
+  background-repeat: no-repeat;
+
+  font-weight: bold;
+  
+}
+
 #cf6_image {
 	float:left;
   margin:0 auto;
-  width:450px;
-  height:281px;
+  width:320px;
+  height:320px;
   transition: background-image 1s ease-in-out;
   background-image:url("a.jpg");
   margin-right:10px;
   margin-bottom:10px;
 }
-
+#sticky {
+  /* BASE CODE */
+  position: fixed;
+     margin-top: 50px;    
+  z-index: 10;
+  width: 960px;
+  height: 10px
+}
+#table1{
+	color:white;
+}
 #cf6_image:hover {
 	float:left;
   background-image:url("b.jpg");
@@ -21,14 +41,17 @@ header {
   margin-bottom:10px;
 }
 
+#gh { color:white}
+#gh1{ color:white; text-align:left;}
+#gh2{color:white; text-align:right;}
 #we{
 	margin:5px;
 	text-align:justify;
 }
 
 #horizontal-scroll {
-width: 1350px;
-height: 680px;
+width: 1250px;
+height: 510px;
 background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/bg-repeat.png);
 -webkit-animation: backgroundScroll 20s linear infinite;
 animation: backgroundScroll 20s linear infinite;
@@ -42,4 +65,48 @@ to {background-position: -400px 0;}
 @keyframes backgroundScroll {
 from {background-position: 0 0;}
 to {background-position: -400px 0;}
+}
+
+body {
+  font: 600 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
+  margin: 12px 0;
+}
+.card-container {
+  cursor: pointer;
+  height: 488px;
+  perspective: 600;
+  position: relative;
+  width: 330px;
+}
+.card {
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
+  width: 100%;
+}
+#myCarousel{
+  width:840px;
+  height:410px;
+  
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+}
+.card .side {
+  backface-visibility: hidden;
+  border-radius: 6px;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+}
+.card .back {
+  background: #eaeaed;
+  color: black;
+  line-height: 25px;
+  text-align: Justify;
+  transform: rotateY(180deg);
+  margin=-10px
 }
