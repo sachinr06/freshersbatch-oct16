@@ -1,0 +1,49 @@
+<div class="modal fade" id="register1">
+    <div class="row">
+        <div class="form_bg">
+          
+                 <h2 class="text-center"> SIGN UP</h2>
+                <br/>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" placeholder="First Name" #fnameRef>
+                </div>
+
+                 <div class="form-group">
+                    <input type="text" class="form-control" id="lname" placeholder="Last Name"  #lnameRef>
+                </div>
+
+                    <div class="form-group">
+                    <input type="text" class="form-control" id="uname" placeholder="User Name"  #unameRef>
+                </div>
+
+                 <div class="form-group">
+                    <input type="password" class="form-control" id="pwd" placeholder="Password" #passRef>
+                </div>
+				                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Email Address"  #emailRef>
+                </div>
+				
+				
+				                <div class="form-group">
+                    <input type="text" class="form-control" id="phone" placeholder="Mobile Number"   #phoneRef>
+                </div>
+				   
+				     
+				
+	
+               
+                <br/>
+                <div class="align-center">
+                    <button type="button"  (click)="registeruser(fnameRef.value,lnameRef.value,unameRef.value,passRef.value,emailRef.value,phoneRef.value)"   class="btn btn-default" id="login">REGISTER</button>
+                    <div [hidden]="showSuccess" class="alert alert-success">
+                     <strong>Success!</strong> Indicates a successful or positive action.
+                        </div>
+                        <div[hidden]="showError"class="alert alert-danger">
+                    <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                        </div>
+					<br><br> Already Registered <a href="" data-target="#login1" data-toggle="modal" data-dismiss="modal">Click Here to Login</a>
+                </div>
+         
+        </div>
+    </div>
+</div>
