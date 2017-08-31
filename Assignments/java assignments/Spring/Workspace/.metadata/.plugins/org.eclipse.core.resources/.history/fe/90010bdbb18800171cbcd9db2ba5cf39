@@ -1,0 +1,46 @@
+package com.spring.SpringProject;
+
+import java.util.*;
+
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	AbstractApplicationContext iocContainer=new ClassPathXmlApplicationContext("beans.xml");
+    /*	OrderBean bean = (OrderBean)iocContainer.getBean("order");
+    	int price1=bean.getItem().getPrice();
+    	OrderBean bean2 = (OrderBean)iocContainer.getBean("order2");
+    	int price2=bean2.getItem().getPrice();
+    	OrderBean bean3 = (OrderBean)iocContainer.getBean("order3");
+    	int price3=bean3.getItem().getPrice();
+    	int total=price1+price2+price3;
+    	System.out.println("TOTAL PRICE OF ALL ORDERS : "+total);*/
+    	
+    	/* ChatRoomBean bean=(ChatRoomBean)iocContainer.getBean("chatroom1");
+    	 String name=bean.getName();
+    	 HashSet <String>users=bean.getUsers();
+       	 List<String> messages=bean.getMessages();
+       	 System.out.println("                     CHATROOM NAME : "+name);
+       	 System.out.println("                     USERS");
+       	 for(String a:users){
+       		 System.out.println(                        a);
+       	 }
+       	 System.out.println("                        MESSAGES");
+       	 for(String b:messages)
+       		 System.out.println(                            b);*/
+    	
+    		EmployeeBean bean=(EmployeeBean)iocContainer.getBean("employee");
+    		String name=bean.getName();
+    		String dname=bean.getDept().getDname();
+    		int deptno=bean.getDept().getDeptno();
+       	 }
+    	
+    }
+

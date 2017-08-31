@@ -1,0 +1,5 @@
+package SpringMongoRestProject.SpringMongo.repository;
+
+public interface CategoryRepository {
+
+}

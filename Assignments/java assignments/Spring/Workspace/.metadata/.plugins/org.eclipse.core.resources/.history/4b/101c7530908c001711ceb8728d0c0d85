@@ -1,0 +1,27 @@
+package SpringMongoRestProject.SpringMongo.service;
+
+
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import SpringMongoRestProject.SpringMongo.dao.UserDao;
+import SpringMongoRestProject.SpringMongo.entity.User;
+import SpringMongoRestProject.SpringMongo.entity.UserLogin;
+
+public class UserServiceImpl implements UserService {
+	@Autowired
+	 UserDao userDao;
+	public User createUser(User user){
+		return userDao.createUser(user);
+		
+	}
+	
+	public UserSession loginUser(UserLogin authen){
+		return userDao.loginUser(authen);
+		
+		
+	}
+}
+

@@ -1,0 +1,10 @@
+package SpringMongoRestProject.SpringMongo.dao;
+
+public class ActionDaoImpl implements ActionDao {
+
+	public ActionCollection getActions(String sessionId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

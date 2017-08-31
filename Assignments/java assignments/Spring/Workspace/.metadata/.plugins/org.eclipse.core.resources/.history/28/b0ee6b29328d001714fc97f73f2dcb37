@@ -1,0 +1,5 @@
+package SpringMongoRestProject.SpringMongo.dao;
+
+public class ActionDaoImpl {
+
+}

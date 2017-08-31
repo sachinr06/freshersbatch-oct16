@@ -1,0 +1,5 @@
+package SpringMongoRestProject.SpringMongo.service;
+
+public interface ActionService {
+
+}

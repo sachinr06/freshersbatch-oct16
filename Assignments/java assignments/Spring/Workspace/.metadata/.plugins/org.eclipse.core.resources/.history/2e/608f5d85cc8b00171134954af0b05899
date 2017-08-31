@@ -1,0 +1,5 @@
+package SpringAOPProject.SpringAOP;
+
+public class User {
+ String uname,password,fname,country;
+}

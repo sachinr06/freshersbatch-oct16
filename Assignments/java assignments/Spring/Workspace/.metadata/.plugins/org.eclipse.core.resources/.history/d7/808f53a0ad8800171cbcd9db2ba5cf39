@@ -1,0 +1,30 @@
+package com.spring.SpringProject;
+
+import java.awt.List;
+
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	AbstractApplicationContext iocContainer=new ClassPathXmlApplicationContext("beans.xml");
+    /*	OrderBean bean = (OrderBean)iocContainer.getBean("order");
+    	int price1=bean.getItem().getPrice();
+    	OrderBean bean2 = (OrderBean)iocContainer.getBean("order2");
+    	int price2=bean2.getItem().getPrice();
+    	OrderBean bean3 = (OrderBean)iocContainer.getBean("order3");
+    	int price3=bean3.getItem().getPrice();
+    	int total=price1+price2+price3;
+    	System.out.println("TOTAL PRICE OF ALL ORDERS : "+total);*/
+    	
+    	 ChatRoomBean bean=(ChatRoomBean)iocContainer.getBean("chatroom1");
+    	 String name=bean.getName();
+    	 List<UserBean> users=(List)bean.getUsers();
+    }
+}

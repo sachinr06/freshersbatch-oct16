@@ -1,0 +1,16 @@
+package SpringMongoRestProject.SpringMongo.service;
+
+
+
+import SpringMongoRestProject.SpringMongo.dao.UserDao;
+import SpringMongoRestProject.SpringMongo.entity.User;
+
+public class UserServiceImpl implements UserService {
+
+	 UserDao userDao;
+	public User createUser(User user){
+		return userDao.createUser(user);
+		
+	}
+}
+

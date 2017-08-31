@@ -1,0 +1,18 @@
+package SpringAOPProject.SpringAOP;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Pointcut;
+
+public class TimeAspect {
+	  @Pointcut("execution(* TimeTest.addInList(..))")  
+		public void parameter_pointcut(){}
+	  @Around("parameter_pointcut()")
+	    public void aroundlist(ProceedingJoinPoint jp) throws Throwable   {
+			long startTime = System.currentTimeMillis();
+				jp.proceed();
+			long endTime = System.currentTimeMillis();
+			System.out.println("TIME TO ADD 1000  ELEMENTS IN LIST : "+endTime-startTime);
+
+	    }
+}

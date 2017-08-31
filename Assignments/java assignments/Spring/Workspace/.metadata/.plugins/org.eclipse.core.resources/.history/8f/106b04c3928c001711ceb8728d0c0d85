@@ -1,0 +1,14 @@
+package SpringMongoRestProject.SpringMongo.repository;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+
+import SpringMongoRestProject.SpringMongo.collections.UserCollections;
+
+public interface LoginRepository extends MongoRepository<user_session,String> {
+
+	@Query(value="userName:?0,password:?1")
+	public List<UserCollections>getusersbyauthen(String userName,String password);
+}

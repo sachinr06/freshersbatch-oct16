@@ -1,0 +1,21 @@
+package SpringMongoRestProject.SpringMongo.service;
+
+
+import java.util.List;
+import java.util.Map;
+
+import SpringMongoRestProject.SpringMongo.collections.CategoryCollection;
+import SpringMongoRestProject.SpringMongo.collections.UserSession;
+import SpringMongoRestProject.SpringMongo.entity.Advertisement;
+import SpringMongoRestProject.SpringMongo.entity.User;
+import SpringMongoRestProject.SpringMongo.entity.UserLogin;
+
+public interface UserService {
+
+	public User createUser(User user);
+	public UserSession loginUser(UserLogin authen);
+	public void logout(String sessionId);
+	public List<CategoryCollection> getAllCategories();
+	public AdvertisementCollection postAd(Advertisement ad);
+	
+}

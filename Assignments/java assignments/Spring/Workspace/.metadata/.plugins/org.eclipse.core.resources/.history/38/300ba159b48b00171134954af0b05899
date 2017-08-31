@@ -1,0 +1,13 @@
+package SpringAOPProject.SpringAOP;
+
+public class StringOperations {
+public String getCapStr(String str){
+	
+}
+public String getLowStr(String str){
+	
+}
+public int getStrLenght(String str){
+	
+}
+}

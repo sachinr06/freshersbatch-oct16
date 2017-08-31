@@ -1,0 +1,7 @@
+package SpringMongoRestTest.SpringMongoTest.dao;
+
+import SpringMongoRestProject.SpringMongo.entity.User;
+
+public interface UserDao {
+	public User createUser(User user);
+}

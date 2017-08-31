@@ -1,0 +1,8 @@
+package SpringMongoRestProject.SpringMongo.service;
+
+public class UserServiceImpl implements UserService {
+
+	public User createUser(User user){
+		
+	}
+}

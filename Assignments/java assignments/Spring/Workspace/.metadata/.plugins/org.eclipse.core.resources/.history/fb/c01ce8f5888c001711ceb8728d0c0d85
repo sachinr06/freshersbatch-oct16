@@ -1,0 +1,11 @@
+package SpringMongoRestProject.SpringMongo.service;
+
+import java.util.Map;
+
+import SpringMongoRestProject.SpringMongo.entity.User;
+
+public interface UserService {
+
+	public User createUser(User user);
+	public Map<String,String> loginUser(Map<String,String> authen);
+}

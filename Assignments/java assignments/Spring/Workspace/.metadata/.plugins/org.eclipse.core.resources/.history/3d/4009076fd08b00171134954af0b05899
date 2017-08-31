@@ -1,0 +1,74 @@
+package SpringAOPProject.SpringAOP;
+
+public class User {
+ String uname,password,fname,country;
+ boolean loginstatus;
+public String getUname() {
+	return uname;
+}
+
+public void setUname(String uname) {
+	this.uname = uname;
+}
+
+public String getPassword() {
+	return password;
+}
+
+public void setPassword(String password) {
+	this.password = password;
+}
+
+public String getFname() {
+	return fname;
+}
+
+public void setFname(String fname) {
+	this.fname = fname;
+}
+
+public String getCountry() {
+	return country;
+}
+
+public void setCountry(String country) {
+	this.country = country;
+}
+
+public User(String uname, String password, String fname, String country) {
+	super();
+	this.uname = uname;
+	this.password = password;
+	this.fname = fname;
+	this.country = country;
+}
+public void register(String uname, String password, String fname, String country) {
+	
+User u=new User(uname,password,fname,country);
+ list.add(u);
+}
+ 
+public void login(String uname,String password){
+	
+	if(loginstatus==true){
+		
+	}
+	else{
+		loginstatus=true;
+		System.out.println("LOGIN SUCCESSFUL");
+	}
+}
+
+public void logout(){
+	
+	if(loginstatus==false){
+		
+	}
+	else{
+		loginstatus=false;
+		System.out.println("LOGOUT SUCCESSFUL");
+	}
+}
+
+
+}

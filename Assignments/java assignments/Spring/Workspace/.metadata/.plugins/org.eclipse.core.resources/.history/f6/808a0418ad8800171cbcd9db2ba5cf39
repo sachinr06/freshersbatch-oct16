@@ -1,0 +1,9 @@
+package com.spring.SpringProject;
+
+import java.util.List;
+
+public class ChatRoomBean {
+ String name;
+ List<UserBean> users;
+ List<MessageBean> messages;
+}

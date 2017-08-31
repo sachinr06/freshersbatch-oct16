@@ -1,0 +1,18 @@
+package SpringAOPProject.SpringAOP;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+
+public class TimeAspect {
+	  @Around("parameter_pointcut()")
+	    public void aroundLength(ProceedingJoinPoint jp) throws Throwable  {
+	    	Object args[] = jp.getArgs();  
+			System.out.println("THE STRING ARGUMENT: " +args[0]); 
+			String op=(String)args[0];
+			jp.proceed();
+				
+			
+		
+
+	    }
+}

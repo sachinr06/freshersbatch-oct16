@@ -1,0 +1,5 @@
+package SpringMongoRestProject.SpringMongo.entity;
+
+public class User {
+
+}

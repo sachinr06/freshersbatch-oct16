@@ -1,0 +1,32 @@
+package SpringAOPProject.SpringAOP;
+
+public class StringOperations {
+public String getCapStr(String str){
+	if(str.length()<3)
+	{
+		throw new IllegalArgumentException("NOT ALLOWED");
+	}
+	else{
+		return str.toUpperCase();
+	}
+}
+public String getLowStr(String str){
+	if(str.length()<3)
+	{
+		throw new IllegalArgumentException("NOT ALLOWED");
+	}
+	else{
+		return str.toLowerCase();
+	}
+}
+public int getStrLenght(String str){
+
+
+		return str.length();
+	}
+	
+	 
+	
+	
+}
+

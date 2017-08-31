@@ -1,0 +1,14 @@
+package com.spring.SpringProject;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+public class ChatRoomBean {
+ String name;
+ @Autowired
+  @Qualifier("user2")
+ List<UserBean> users;
+ List<MessageBean> messages;
+}

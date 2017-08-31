@@ -1,0 +1,7 @@
+package SpringMongoRestProject.SpringMongo.entity;
+
+public class User {
+
+	String firstName,lastName,userName,password,email;
+	long phone;
+}

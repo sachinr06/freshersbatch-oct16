@@ -1,0 +1,8 @@
+package SpringMongoRestProject.SpringMongo.collections;
+
+import org.springframework.data.annotation.Id;
+
+public class UserSession {
+	@Id String sessionid;
+	String userName;
+}

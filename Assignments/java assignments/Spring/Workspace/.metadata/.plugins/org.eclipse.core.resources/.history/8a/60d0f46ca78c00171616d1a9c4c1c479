@@ -1,0 +1,7 @@
+package SpringMongoRestProject.SpringMongo.collections;
+
+public class AdvertisementCollection {
+@Id
+String _id;
+
+}

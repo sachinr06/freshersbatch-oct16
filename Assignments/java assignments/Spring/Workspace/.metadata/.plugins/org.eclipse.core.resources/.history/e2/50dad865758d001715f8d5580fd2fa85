@@ -1,0 +1,290 @@
+package HibernateTest.FirstHibernateDemo;
+
+
+
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.persister.entity.Queryable;
+
+
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	Configuration configuration =new Configuration();
+    	configuration.configure("hibernate.cfg.xml");
+    	SessionFactory sessionFactory=configuration.buildSessionFactory();
+    	//insert(sessionFactory);
+    	//update(sessionFactory);
+    	//loadvsGet(sessionFactory);
+    	//persistvssave(sessionFactory);
+    	//updatevsmerge(sessionFactory);
+    	//getAll(sessionFactory);
+    	//deleteProduct(sessionFactory);
+    	//insertSQL(sessionFactory);
+    	//sessionFactory.close();
+    	insertintoEmployee(sessionFactory);
+    	hqlqueries(sessionFactory);
+    	criteriaqueries(sessionFactory);
+    	namedqueries(sessionFactory);
+    }
+    
+    public  static void insert(SessionFactory sessionFactory){
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	Product product=new Product("Laptop",40000);
+    	Product product2=new Product("Chair",40000);
+    	session.save(product);
+    	session.save(product2);
+    	tx.commit();
+    	session.close();
+    	System.out.println("Inserted a Product");
+
+    	}
+    
+    
+    public  static void insertSQL(SessionFactory sessionFactory){
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	Product product=new Product("Mobile",1000);
+    	
+    	SQLQuery squery=session.createSQLQuery("INSERT INTO PRODUCT_MASTER(P_ID,NAME,COST) VALUES(20,'Mobile',1000)");
+    	//squery.setParameter(2, product.getPrice());
+    	//squery.setParameter(1, product.getName());
+    	//squery.setParameter(2, product.getPrice());
+    	
+    	
+    	squery.executeUpdate();
+    	tx.commit();
+    	session.close();
+    	System.out.println("Inserted a Product using SQL");
+
+    	}
+    
+    public  static void persistvssave(SessionFactory sessionFactory){
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	Product product=new Product("Table",10000);
+    	Product product2=new Product("Sofa",20000);
+    	long pid=(Long)session.save(product); //returns the id
+    	System.out.println(" PID " +pid);
+    	session.persist(product2); //void return
+    	tx.commit();
+    	session.close();
+    	System.out.println("Inserted a Product");
+
+    	}
+    
+    public  static void update(SessionFactory sessionFactory){
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	
+    	Product product=session.get(Product.class, 22L);
+    	product.setPrice(50000);
+    	tx.commit();
+    	session.close();
+    	System.out.println("Updated a Product");
+
+    	}
+    
+    public  static void loadvsGet(SessionFactory sessionFactory){
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	Product product=session.load(Product.class, 22L); //loads from cache until information not demanded
+    //	Product product=session.get(Product.class, 22L); //gets from database 
+    	product.setPrice(50000);
+    	tx.commit();
+    	session.close();
+    	System.out.println("Updated a Product");
+
+    	}
+    
+    
+    
+    public  static void getAll(SessionFactory sessionFactory){
+    	Session session =sessionFactory.openSession();
+    	
+    	Query query=session.createQuery("from Product");
+    	List<Product> listofProducts =query.list();
+    	System.out.println("ALL PRODUCTS : "+listofProducts);
+    	session.close();
+    	
+
+    	}
+    
+
+    public  static void updatevsmerge(SessionFactory sessionFactory){
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	
+    	Product product=session.get(Product.class, 2L);
+    	product.setPrice(50000);
+    	tx.commit();
+    	session.close();
+    	System.out.println("Updated a Product");
+    	
+    	
+    	product.setPrice(60000);
+    	session =sessionFactory.openSession();
+     tx=session.beginTransaction();
+    	Product product2=session.get(Product.class, 2L);
+    	//session.update(product); // nouniqueobject exception as trying to update a detached object
+    	session.merge(product); //merge with new object then update to database
+    	tx.commit();
+    	session.close();
+
+    	
+
+    	}
+    
+    
+    public  static void deleteProduct(SessionFactory sessionFactory){
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	Product product=session.load(Product.class, 1L);
+    	session.delete(product);
+    	tx.commit();
+    	session.close();
+    	System.out.println("Deleted a Product");
+
+    	}
+    
+    
+    
+    public  static void insertintoEmployee(SessionFactory sessionFactory){
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    		Employee emp=new Employee("Ajay",12000,"Pune");
+    		Employee emp2=new Employee("Gabreil",10000,"Nagpur");
+    		Employee emp3=new Employee("Rose",9000,"Pune");
+    		Employee emp4=new Employee("Alex",8000,"Nagpur");
+    		Employee emp5=new Employee("John",14000,"Mumbai");
+    		session.save(emp);
+        	session.save(emp2);
+        	session.save(emp3);
+        	session.save(emp4);
+        	session.save(emp5);
+        	
+    		tx.commit();
+        	session.close();
+    }
+    
+    
+    public  static void  hqlqueries (SessionFactory sessionFactory){
+    	
+    	
+    	Session session =sessionFactory.openSession();
+    	System.out.println("HQL QUERIES");
+    	Query query=session.createQuery("SELECT SUM(E.salary) from Employee E");
+    	List<Employee> result=query.list();
+    	
+    	System.out.println("TOTAL SALARY HQL : "+result);
+    	
+    	Query query2=session.createQuery(" from Employee E ORDER BY E.salary");
+    	List<Employee> result2=query2.list();
+    	System.out.println("ORDER BY SALARY  HQL: "+result2);
+    	
+    	
+    	Query query3=session.createQuery("SELECT AVG(E.salary) from Employee E  GROUP BY E.city");
+    	List<Employee> result3=query3.list();
+    	System.out.println("GROUP BY CITY HQL : "+result3);
+    	
+    	Query query4=session.createQuery("SELECT AVG(E.salary) from Employee E");
+    	List<Employee> result4=query4.list();
+    	System.out.println("AVERAGE SALARY  HQL: "+result4);
+    	
+    	Query query5=session.createQuery(" from Employee E Where E.salary>10000");
+    	List<Employee> result5=query5.list();
+    	System.out.println("HAVING SAL GT 10000  HQL: "+result5);
+    	session.close();
+    	
+    }
+    
+    
+    public  static void  criteriaqueries (SessionFactory sessionFactory){
+    	
+    	Session session =sessionFactory.openSession();
+    	System.out.println("");
+    	System.out.println("");
+    	System.out.println("");
+    	System.out.println("");
+    	Criteria cr = session.createCriteria(Employee.class);
+    	cr.setProjection(Projections.sum("salary"));
+    	List <Employee> result = cr.list();
+    	System.out.println("SUM SALARY CRI: "+result);
+    	
+    	Criteria cr2 = session.createCriteria(Employee.class); 
+    	cr2.addOrder(Order.asc("salary")); 
+    	List<Employee> result2=cr2.list();
+    	System.out.println("ORDER BY SALARY CRI: "+result2);
+
+    	
+    	
+    	Criteria cr3 = session.createCriteria(Employee.class);
+    	cr3.setProjection(Projections.sum("salary"));
+    	ProjectionList projectionList = Projections.projectionList();
+    	projectionList.add(Projections.groupProperty("city"));
+    	  cr3.setProjection(projectionList);
+    	 	List<Employee> result3=cr3.list();
+    	 	System.out.println("GROUP BY CITY CRI: "+result3);
+    	
+    	Criteria cr4 = session.createCriteria(Employee.class);
+    	cr4.setProjection(Projections.avg("salary"));
+    	List <Employee> result4 = cr4.list();
+    	System.out.println("AVG SALARY CRI: "+result4);
+    	
+    	Criteria cr5 = session.createCriteria(Employee.class); 
+    	cr5.add(Restrictions.gt("salary", 10000)); 
+    	List<Employee> result5=cr5.list();
+    	System.out.println("HAVING SAL GT 10000  CRI: "+result5);
+    	session.close();
+    }
+    
+    public  static void  namedqueries (SessionFactory sessionFactory){
+    	
+    	Session session =sessionFactory.openSession();
+    	System.out.println("HQL QUERIES");
+    	Query query=session.getNamedQuery("totalsalary"); 
+    	List<Employee> result=query.list();
+    	
+    	System.out.println("TOTAL SALARY HQL : "+result);
+    	
+    	Query query2=session.createQuery(" from Employee E ORDER BY E.salary");
+    	List<Employee> result2=query2.list();
+    	System.out.println("ORDER BY SALARY  HQL: "+result2);
+    	
+    	
+    	Query query3=session.createQuery("SELECT AVG(E.salary) from Employee E  GROUP BY E.city");
+    	List<Employee> result3=query3.list();
+    	System.out.println("GROUP BY CITY HQL : "+result3);
+    	
+    	Query query4=session.createQuery("SELECT AVG(E.salary) from Employee E");
+    	List<Employee> result4=query4.list();
+    	System.out.println("AVERAGE SALARY  HQL: "+result4);
+    	
+    	Query query5=session.createQuery(" from Employee E Where E.salary>10000");
+    	List<Employee> result5=query5.list();
+    	System.out.println("HAVING SAL GT 10000  HQL: "+result5);
+    	session.close();
+    
+    }
+    
+    
+}

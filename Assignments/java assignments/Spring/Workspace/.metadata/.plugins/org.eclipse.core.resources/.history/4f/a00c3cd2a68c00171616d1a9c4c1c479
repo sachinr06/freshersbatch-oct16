@@ -1,0 +1,16 @@
+package SpringMongoRestProject.SpringMongo.service;
+
+import java.util.Map;
+
+import SpringMongoRestProject.SpringMongo.collections.UserSession;
+import SpringMongoRestProject.SpringMongo.entity.User;
+import SpringMongoRestProject.SpringMongo.entity.UserLogin;
+
+public interface UserService {
+
+	public User createUser(User user);
+	public UserSession loginUser(UserLogin authen);
+	public void logout(String sessionId);
+	public Advertisement postAd(Advertise ad);
+	
+}

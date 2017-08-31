@@ -1,0 +1,58 @@
+package SpringMongoRestProject.SpringMongo.dao;
+
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.fasterxml.jackson.databind.util.JSONPObject;
+
+import SpringMongoRestProject.SpringMongo.collections.UserCollections;
+import SpringMongoRestProject.SpringMongo.collections.UserSession;
+
+import SpringMongoRestProject.SpringMongo.entity.User;
+import SpringMongoRestProject.SpringMongo.entity.UserLogin;
+import SpringMongoRestProject.SpringMongo.repository.LoginRepository;
+import SpringMongoRestProject.SpringMongo.repository.UserRepository;
+
+public class UserDaoImpl implements UserDao {
+	@Autowired
+UserRepository userRepository;
+	@Autowired
+	LoginRepository loginRepository;
+	//Map<String,String> session =new HashMap<String,String>();
+	public User createUser(User user) {
+		UserCollections userCollection=new UserCollections();
+		userCollection.setFirstName(user.getFirstName());
+		userCollection.setLastName(user.getLastName());
+		userCollection.setUserName(user.getUserName());
+		userCollection.setPassword(user.getPassword());
+		userCollection.setEmail(user.getEmail());
+		userCollection.setPhone(user.getPhone());
+		userRepository.save(userCollection);
+		return user;
+	}
+	public UserSession loginUser(UserLogin authen){
+		UserSession usersession=new UserSession();
+		UserCollections userCollection=userRepository.getusersbyauthen(authen.getUserName(), authen.getPassword());
+		if(userCollection !=null){
+		usersession.setUserName(userCollection.getUserName());
+		 loginRepository.save(usersession);
+	return usersession;
+		}
+		else{
+			return null;
+		}
+		
+	}
+	public void logout(String sessionId) {
+		// TODO Auto-generated method stub
+		UserSession usersession=new UserSession.findOne(sessionId);
+		 loginRepository.delete( sessionId);
+	}
+
+}

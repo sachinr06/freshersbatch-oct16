@@ -1,0 +1,6 @@
+package com.spring.SpringProject;
+
+public class EmployeeBean {
+String name;
+DepartmentBean dept;
+}

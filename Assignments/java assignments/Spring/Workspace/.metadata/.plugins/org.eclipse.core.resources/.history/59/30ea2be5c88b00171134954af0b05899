@@ -1,0 +1,13 @@
+package SpringAOPProject.SpringAOP;
+import java.util.*;
+public class TimeTest {
+
+	 void  addInList(){
+		List<Integer> list=new ArrayList<Integer>();
+	 }
+	 
+ void  addInVector(){
+		 
+	 
+	 }
+}

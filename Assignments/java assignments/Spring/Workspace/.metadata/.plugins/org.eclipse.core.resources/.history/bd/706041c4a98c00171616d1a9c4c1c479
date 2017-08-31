@@ -1,0 +1,6 @@
+package SpringMongoRestProject.SpringMongo.entity;
+
+public class Category {
+
+	
+}

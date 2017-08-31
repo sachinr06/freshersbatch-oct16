@@ -1,0 +1,8 @@
+package SpringMongoRestProject.SpringMongo.service;
+
+import SpringMongoRestProject.SpringMongo.entity.User;
+
+public interface UserService {
+
+	public User createUser(User user);
+}

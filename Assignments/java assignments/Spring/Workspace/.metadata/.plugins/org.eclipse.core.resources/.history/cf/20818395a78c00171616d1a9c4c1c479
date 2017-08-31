@@ -1,0 +1,9 @@
+package SpringMongoRestProject.SpringMongo.collections;
+
+import org.springframework.data.annotation.Id;
+
+public class AdvertisementCollection {
+@Id
+String _id;
+
+}

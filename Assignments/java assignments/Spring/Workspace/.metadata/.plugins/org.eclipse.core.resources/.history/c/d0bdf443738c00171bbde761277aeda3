@@ -1,0 +1,6 @@
+package SpringMongoRestProject.SpringMongo.collections;
+
+@Document(collection="users")
+public class UserCollections {
+
+}
