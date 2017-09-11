@@ -1,0 +1,23 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="advertisements")
+public class Advertisement {
+
+	String title,name,category,description;
+	
+	@Id
+	@Column(name="action_id")
+	private Long id;
+	
+	@Column(name="title")
+	private String title;
+	
+	@Column(name="name")
+	private String name;
+}

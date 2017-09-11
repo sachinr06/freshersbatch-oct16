@@ -1,0 +1,8 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.dao;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.User;
+
+public interface UserDao {
+
+	public User register( User user);
+}

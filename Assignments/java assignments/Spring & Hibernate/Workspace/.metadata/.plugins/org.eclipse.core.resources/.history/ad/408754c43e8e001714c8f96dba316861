@@ -1,0 +1,8 @@
+package HibernateInheritenceTest.HibernateInheritence.tablepersubclass;
+
+@Entity
+@Table(name="CAR")
+@PrimaryKeyJoinColumn(name="ID")
+public class Car extends Vehicle{
+
+}

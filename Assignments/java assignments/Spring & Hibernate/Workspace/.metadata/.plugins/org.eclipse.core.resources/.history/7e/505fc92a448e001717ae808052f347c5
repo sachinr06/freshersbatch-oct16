@@ -1,0 +1,42 @@
+package HibernateMappingTest.HibernateMapping;
+
+
+
+
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class EmployeeManagerTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Configuration configuration =new Configuration();
+    	configuration.configure("hibernate.cfg.xml");
+    	SessionFactory sessionFactory=configuration.buildSessionFactory();
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	Employee emp=new Employee("sachin",10000,null);
+    	Employee emp2=new Employee("aniket",1000,emp);
+    	Employee emp3=new Employee("gopal",2000,emp);
+    	Employee emp4=new Employee("swapnil",500,emp3);
+    	session.persist(emp);
+       	session.persist(emp2);
+       	session.persist(emp3);
+       	session.persist(emp4);
+       	
+
+    //   Query query = session.createQuery(" SELECT e1.name EmployeeName, e2.name AS ManagerName FROM Employee e1 INNER JOIN Employee e2 WHERE e1.mgr_id=e2.id ");
+      // Query query2 = session.createQuery("SELECT e.name AS EMPNAME, m.name AS MANAGERNAME FROM Employee e INNER JOIN Employee m ON e.mgr_id=m.id");
+       //	Query query2 = session.createQuery("SELECT e.name,m.name FROM Employee e, Employee m WHERE e.id=m.id");
+       	tx.commit();
+    	session.close();
+    	
+	}
+
+}

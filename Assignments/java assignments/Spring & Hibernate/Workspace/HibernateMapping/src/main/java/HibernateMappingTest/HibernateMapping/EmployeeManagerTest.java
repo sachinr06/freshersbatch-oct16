@@ -1,0 +1,50 @@
+package HibernateMappingTest.HibernateMapping;
+
+
+
+
+
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class EmployeeManagerTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Configuration configuration =new Configuration();
+    	configuration.configure("hibernate.cfg.xml");
+    	SessionFactory sessionFactory=configuration.buildSessionFactory();
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	Employee emp=new Employee("sachin",10000,null);
+    	Employee emp2=new Employee("aniket",1000,emp);
+    	Employee emp3=new Employee("gopal",2000,emp);
+    	Employee emp4=new Employee("swapnil",500,emp3);
+    	session.persist(emp);
+       	session.persist(emp2);
+       	session.persist(emp3);
+       	session.persist(emp4);
+
+       	tx.commit();
+    	session.close();
+    	
+    	Session session2 =sessionFactory.openSession();
+    	Transaction tx2=session2.beginTransaction();
+        	Query query2 = session2.
+        			createQuery(" INSERT INTO Tempemp(ename,mname) SELECT e.name,m.name FROM Employee e, Employee m WHERE e.id=m.id");
+
+        	List<Employee> a=query2.list();
+        	System.out.println(a.toString());
+        	for(Employee r:a){
+        		System.out.println(r);
+        	}
+        	tx2.commit();
+        	session2.close();
+	}
+
+}

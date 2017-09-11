@@ -1,0 +1,12 @@
+package HibernateInheritenceTest.HibernateInheritence.tableperclass;
+
+@Entity
+@Table(name="BIKE")
+@AttributeOverrides({  
+    @AttributeOverride(name="employeeId", column=@Column(name="id")),  
+    @AttributeOverride(name="sal", column=@Column(name="sal")),  
+    @AttributeOverride(name="name", column=@Column(name="name"))  
+})
+public class Bike extends Vehicle{
+
+}

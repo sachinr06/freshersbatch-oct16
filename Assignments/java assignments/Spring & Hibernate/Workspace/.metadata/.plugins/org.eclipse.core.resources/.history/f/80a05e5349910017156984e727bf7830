@@ -1,0 +1,102 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.entity;
+
+import java.sql.Date;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name="user_session")
+public class UserSession {
+	
+	
+	@Column(name="auth-token")
+	private String id;
+	
+	@Column(name="username")
+	private String userName;
+
+	@Column(name="last_updated")
+	private Date lastupdated;
+
+	
+
+
+
+	public String getId() {
+		return id;
+	}
+
+
+
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+
+
+
+	public Date getLastupdated() {
+		return lastupdated;
+	}
+
+
+
+
+
+	public void setLastupdated(Date lastupdated) {
+		this.lastupdated = lastupdated;
+	}
+
+
+
+
+
+	public UserSession(String id, String userName, Date lastupdated) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.lastupdated = lastupdated;
+	}
+
+
+	public String generateauth(){
+	  String random = Objects.requireNonNull(random);
+        this.symbols = symbols.toCharArray();
+        this.buf = new char[length];
+	}
+
+
+	public UserSession() {
+		
+	}
+	
+	
+	
+}

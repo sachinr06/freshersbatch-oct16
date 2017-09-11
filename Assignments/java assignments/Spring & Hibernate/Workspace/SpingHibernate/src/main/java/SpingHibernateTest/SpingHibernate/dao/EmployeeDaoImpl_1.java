@@ -1,0 +1,25 @@
+package SpingHibernateTest.SpingHibernate.dao;
+
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import SpingHibernateTest.SpingHibernate.Entity.Employee;
+
+public class EmployeeDaoImpl_1 {
+
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	
+	@Transactional
+	public Employee save(Employee emp){
+		Session session = sessionFactory.getCurrentSession();
+		session.save(emp);
+		return emp;
+	}
+}

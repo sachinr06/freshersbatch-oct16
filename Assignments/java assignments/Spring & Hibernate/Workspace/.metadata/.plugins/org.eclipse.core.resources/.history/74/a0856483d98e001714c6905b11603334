@@ -1,0 +1,5 @@
+package HibernateCachingTest.HibernateCaching;
+
+public class Employee {
+
+}

@@ -1,0 +1,41 @@
+package HibernateMappingTest.HibernateMapping;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import HibernateTest.FirstHibernateDemo.Product;
+
+
+
+public class MAIN_1_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Configuration configuration =new Configuration();
+    	configuration.configure("hibernate.cfg.xml");
+    	SessionFactory sessionFactory=configuration.buildSessionFactory();
+    	Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	Address add=new Address(225,"Laxmi Nagar","Nagpur",20);
+    	Customer cust=new Customer("Sachin",12345,add);
+       	Address add2=new Address(249,"Pratap Nagar","Nagpur",18);
+    	Customer cust2=new Customer("Shruti",12545,add2);
+    	session.persist(cust);
+    	session.persist(cust2);
+    	tx.commit();
+    	session.close();
+    	
+    	Session session2 =sessionFactory.openSession();
+    	Transaction tx2=session.beginTransaction();
+    	Customer customer=session.get(Customer.class, 2L);
+    	customer.setPhone(122345);
+    	
+    	tx2.commit();
+    	session2.close();
+
+	}
+
+}

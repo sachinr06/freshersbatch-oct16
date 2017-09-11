@@ -1,0 +1,64 @@
+package HibernateInheritenceTest.HibernateInheritence.StockCRUD;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import HibernateMappingTest.HibernateMapping.Market;
+import HibernateMappingTest.HibernateMapping.Stock;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		Configuration configuration2 =new Configuration();
+		configuration2.configure("hibernate.cfg.xml");
+		SessionFactory sessionFactory2=configuration2.buildSessionFactory();
+		Session session5 =sessionFactory2.openSession();
+		Transaction tx=session5.beginTransaction();
+		
+		Market market=new Market("bardi","Nagpur");
+		Map<String,Stock> stockset=new HashMap<String,Stock>();
+		Stock stock=new Stock("abc",100,market);
+		Stock stock2=new Stock("xyz",120,market);
+		stockset.add(stock);
+		stockset.add(stock2);
+		market.setStocks(stockset);
+		Market market2=new Market("NSE","Delhi");
+		List<Stock> stockset2=new ArrayList<Stock>();
+		Stock stock3=new Stock("nw",100,market2);
+		Stock stock4=new Stock("pqr",120,market2);
+		stockset2.add(stock3);
+		stockset2.add(stock4);
+		market2.setStocks(stockset2);
+		session5.persist(market);
+		session5.persist(market2);
+		tx.commit();
+		session5.close();
+		
+		
+		Session session2 =sessionFactory2.openSession();
+		Transaction tx2=session2.beginTransaction();
+		
+		Stock s=session2.get(Stock.class, 2L);
+		s.getMarket().setCity("Pune");
+		tx2.commit();
+		session2.close();
+		
+		Session session3 =sessionFactory2.openSession();
+		Transaction tx3=session3.beginTransaction();
+		Market m=session3.get(Market.class, 1L);
+		session3.delete(m);
+				tx3.commit();
+				session3.close();
+	}
+
+}

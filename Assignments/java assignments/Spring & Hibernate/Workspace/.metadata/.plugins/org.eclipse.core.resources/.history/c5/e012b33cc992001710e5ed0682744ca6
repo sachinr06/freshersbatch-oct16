@@ -1,0 +1,6 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.entity;
+
+public class Message {
+
+	
+}

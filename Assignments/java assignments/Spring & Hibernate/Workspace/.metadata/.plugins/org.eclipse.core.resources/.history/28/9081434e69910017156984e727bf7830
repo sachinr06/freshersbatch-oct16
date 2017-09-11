@@ -1,0 +1,7 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.dao;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.Advertisement;
+
+public interface AdvertisementDao {
+	public Advertisement postAd(Advertisement Ad,String sessionId);
+}

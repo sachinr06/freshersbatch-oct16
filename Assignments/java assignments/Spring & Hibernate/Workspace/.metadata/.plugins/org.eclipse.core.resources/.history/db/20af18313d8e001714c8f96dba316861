@@ -1,0 +1,5 @@
+package HibernateInheritenceTest.HibernateInheritence.tableperclass;
+
+public class Car extends Vehicle{
+
+}

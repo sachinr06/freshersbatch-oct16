@@ -1,0 +1,14 @@
+package SpingHibernateTest.SpingHibernate.dao;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class EmployeeDaoImpl_1 {
+
+
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	
+	
+}

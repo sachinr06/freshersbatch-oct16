@@ -1,0 +1,14 @@
+package HibernateMappingTest.HibernateMapping;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+public class Market {
+
+	public class Customer {
+		@Id
+		@GeneratedValue
+		@Column(name="id")
+		private Long id;
+}

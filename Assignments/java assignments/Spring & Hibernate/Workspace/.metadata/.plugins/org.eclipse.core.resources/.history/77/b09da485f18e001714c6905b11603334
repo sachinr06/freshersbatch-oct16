@@ -1,0 +1,5 @@
+package SpringHibernateTest.SpringHibernate.Entity;
+
+public class Employee {
+
+}

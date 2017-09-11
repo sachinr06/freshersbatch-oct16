@@ -1,0 +1,25 @@
+package HibernateMappingTest.HibernateMapping;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="ADDRESS")
+public class Profile {
+	@Id
+	@GeneratedValue
+	@Column(name="id")
+	private Long id;
+	
+	@Column(name="company")
+	private String company;
+	
+	@Column(name="experience")
+	private double experience;
+
+
+	
+
+}

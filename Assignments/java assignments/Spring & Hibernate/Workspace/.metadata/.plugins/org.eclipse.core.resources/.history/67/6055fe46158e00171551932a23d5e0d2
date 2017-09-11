@@ -1,0 +1,102 @@
+package HibernateMappingTest.HibernateMapping;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="MARKET")
+public class Market {
+
+	
+		@Id
+		@GeneratedValue
+		@Column(name="id")
+		private Long id;
+		
+		
+
+		@Column(name="name")
+		private String name;
+		
+		@Column(name="city")
+		private String city;
+
+
+		@OneToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE}, 
+				fetch=FetchType.EAGER, mappedBy = "market")
+		@Column(name="stock_id")
+		List<Stock> stocks;
+		
+		
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getCity() {
+			return city;
+		}
+
+		public void setCity(String city) {
+			this.city = city;
+		}
+
+		
+
+		public List<Stock> getStocks() {
+			return stocks;
+		}
+
+		public void setStocks(List<Stock> stocks) {
+			this.stocks = stocks;
+		}
+
+		public Market(Long id, String name, String city,Stock stock) {
+			super();
+			this.id = id;
+			this.name = name;
+			this.city = city;
+			this.stock=stock;
+		}
+
+		public Market(String name, String city,Stock stock) {
+			super();
+			this.name = name;
+			this.city = city;
+			this.stock=stock;
+		}
+
+		public Market() {
+			super();
+		}
+
+		@Override
+		public String toString() {
+			return "Market [id=" + id + ", name=" + name + ", city=" + city + ", stock="+stocks+"]";
+		}
+		
+		
+		
+}

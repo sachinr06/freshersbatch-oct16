@@ -1,0 +1,13 @@
+package HibernateInheritenceTest.HibernateInheritence.singletable;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+			Vehicle v=new Vehicle(1000);
+			Car c=new Car(1000,"Ford");
+			Bike b=new Bike(500,"Kawasaki");
+	}
+
+}

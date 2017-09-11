@@ -1,0 +1,19 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.Category;
+
+@Autowired
+CategoryDao categoryDao;
+
+public class CategoryServiceImpl implements CategoryService{
+
+	public List<Category> getAllCategories() {
+		// TODO Auto-generated method stub
+		return categoryDao.getAllCategories();
+	}
+
+}

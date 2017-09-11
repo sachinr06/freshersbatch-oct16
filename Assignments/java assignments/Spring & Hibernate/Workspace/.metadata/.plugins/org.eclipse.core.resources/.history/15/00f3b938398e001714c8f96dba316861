@@ -1,0 +1,8 @@
+package HibernateInheritenceTest.HibernateInheritence;
+
+
+public class Vehicle {
+
+	@Id
+	
+}

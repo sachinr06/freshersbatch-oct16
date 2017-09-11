@@ -1,0 +1,5 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.service;
+
+public class CategoryServiceImpl {
+
+}

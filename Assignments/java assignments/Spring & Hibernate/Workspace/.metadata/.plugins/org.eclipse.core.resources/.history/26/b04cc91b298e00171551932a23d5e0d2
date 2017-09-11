@@ -1,0 +1,40 @@
+package HibernateMappingTest.HibernateMapping;
+
+
+
+	import javax.persistence.CascadeType;
+	import javax.persistence.Column;
+	import javax.persistence.Entity;
+	import javax.persistence.FetchType;
+	import javax.persistence.GeneratedValue;
+	import javax.persistence.Id;
+	import javax.persistence.JoinColumn;
+	import javax.persistence.OneToOne;
+	import javax.persistence.Table;
+
+
+	@Entity
+	@Table(name="EMPLOYEE")
+	public class Employee {
+
+		@Id
+		@GeneratedValue
+		@Column(name="id")
+		private Long employeeId;
+
+		@Column(name="name")
+		private String name;
+		
+		@Column(name="sal")
+		private double sal;
+
+		@OneToOne(cascade={CascadeType.PERSIST}, fetch=FetchType.EAGER)
+		@JoinColumn(name="profile_id")
+		private Long mgr_id;
+
+
+		
+	}
+	
+
+

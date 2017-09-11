@@ -1,0 +1,5 @@
+package SpingHibernateTest.SpingHibernate.Entity;
+
+public class Employee {
+
+}

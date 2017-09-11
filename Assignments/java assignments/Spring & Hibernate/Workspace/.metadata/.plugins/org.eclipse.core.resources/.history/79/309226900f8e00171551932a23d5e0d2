@@ -1,0 +1,5 @@
+package HibernateTest.FirstHibernateDemo;
+
+public class Address {
+
+}

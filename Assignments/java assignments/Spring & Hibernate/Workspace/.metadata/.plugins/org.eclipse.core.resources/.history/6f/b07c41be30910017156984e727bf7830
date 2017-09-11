@@ -1,0 +1,8 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.service;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.User;
+
+public interface UserService {
+
+	public User register(User user);
+}

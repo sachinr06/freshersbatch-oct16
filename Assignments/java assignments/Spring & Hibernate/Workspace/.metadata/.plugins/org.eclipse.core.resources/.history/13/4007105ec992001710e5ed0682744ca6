@@ -1,0 +1,32 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.entity;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import HibernateMappingTest.HibernateMapping.Market;
+
+public class Message {
+
+
+	@Id
+	@GeneratedValue
+	@Column(name="id")
+	private Long id;
+
+	@Column(name="data")
+	private String data;
+	
+
+	
+
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="advid")
+	Advertisement ad;
+	
+	
+}

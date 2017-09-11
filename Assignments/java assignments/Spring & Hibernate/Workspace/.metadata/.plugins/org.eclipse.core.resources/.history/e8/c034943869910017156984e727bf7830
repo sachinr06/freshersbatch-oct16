@@ -1,0 +1,7 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.service;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.Advertisement;
+
+public interface AdvertisementService {
+	public Advertisement postAd(Advertisement Ad,String sessionId);
+}

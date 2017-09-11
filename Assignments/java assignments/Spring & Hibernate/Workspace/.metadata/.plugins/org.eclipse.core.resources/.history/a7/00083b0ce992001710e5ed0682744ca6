@@ -1,0 +1,133 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.dao;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.json.JSONObject;
+//import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.Advertisement;
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.Message;
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.User;
+
+
+public class AdvertisementDaoImpl  extends HibernateDaoSupport implements AdvertisementDao{
+
+	@Transactional
+	public Advertisement postAd(Advertisement Ad, String sessionId) {
+		if(sessionId !=null){
+			System.out.println(Ad);
+			 getHibernateTemplate().save(Ad);
+			return Ad;
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	public String searchAll() {
+		// TODO Auto-generated method stub
+		List ads=(List<Advertisement>) getHibernateTemplate().find("from Advertisement");
+		System.out.println(ads);
+		JSONObject advertiseList=new JSONObject();
+		JSONObject json=new JSONObject();
+		advertiseList.put("advertiseList", ads);
+		json.put("data", advertiseList);
+		return json.toString();
+		
+	}
+
+	public String searchText(String text) {
+		// TODO Auto-generated method stub
+		List<Advertisement> adlist2 = new ArrayList<Advertisement>();
+		List adlist=getHibernateTemplate().find("from Advertisement");
+		for(Object a:adlist){
+		Advertisement ads=(Advertisement) a;
+		if(ads.getTitle().contains(text) || ads.getName().contains(text)||ads.getDescription().contains(text)){
+			adlist2.add(ads);
+		}
+		
+		}
+		   // List ads=q.list();
+		JSONObject advertiseList=new JSONObject();
+		JSONObject json=new JSONObject();
+		advertiseList.put("advertiseList", adlist2);
+		json.put("data", advertiseList);
+		return json.toString();
+	}
+
+	public String viewAd(Long postId) {
+		// TODO Auto-generated method stub
+		List adlist=getHibernateTemplate().find("from Advertisement where id=?",postId);
+		Advertisement ads=(Advertisement) adlist.get(0);
+		JSONObject temp=new JSONObject();
+		temp.put("name", ads.getName());
+		temp.put("title", ads.getTitle());
+		temp.put("category",ads.getCategory());
+		temp.put("description",ads.getDescription());
+		JSONObject mypost=new JSONObject();
+		JSONObject json=new JSONObject();
+		mypost.append("mypost", temp);
+		json.put("data", mypost);
+		return json.toString();
+	}
+
+	public String getUserAds(String sessionId) {
+		// TODO Auto-generated method stub
+		List names=getHibernateTemplate().find("Select userName from UserSession where authid=?",sessionId);
+		String name=(String) names.get(0);
+		List ads=(List<Advertisement>) getHibernateTemplate().find("from Advertisement where name=?",name);
+		System.out.println(ads);
+		JSONObject advertiseList=new JSONObject();
+		JSONObject json=new JSONObject();
+		advertiseList.put("mypostList", ads);
+		json.put("data", advertiseList);
+		return json.toString();
+	}
+	
+	
+	@Transactional
+	public void deleteAd(long postid) {
+		
+		Query query = getHibernateTemplate().getSessionFactory().openSession()
+				 .createQuery("Delete from Advertisement where id=?");
+                 query.setParameter(0, postid);
+                 query.executeUpdate();
+
+		
+	}
+
+	public Advertisement editAd(Advertisement ad, String sessionId) {
+		// TODO Auto-generated method stub
+		if(sessionId !=null){
+			System.out.println("in edit "+ad);
+			Query query = getHibernateTemplate().getSessionFactory().openSession()
+					 .createQuery("Update Advertisement set title=?,category=?,name=?,description=? where id=?");
+			  query.setParameter(0, ad.getTitle());
+			  query.setParameter(1, ad.getCategory());
+			  query.setParameter(2, ad.getName());
+			  query.setParameter(3, ad.getDescription());
+			  query.setParameter(4, ad.getId());
+              query.executeUpdate();
+              
+			return ad;
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	public void sendMessage(Message m) {
+		// TODO Auto-generated method stub
+		System.out.println("Message data"+m.getData());
+		 getHibernateTemplate().save(m);
+	}
+
+
+}

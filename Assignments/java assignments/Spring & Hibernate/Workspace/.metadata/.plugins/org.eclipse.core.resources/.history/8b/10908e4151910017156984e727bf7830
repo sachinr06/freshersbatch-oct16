@@ -1,0 +1,5 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.dao;
+
+public interface CategoryDao {
+
+}

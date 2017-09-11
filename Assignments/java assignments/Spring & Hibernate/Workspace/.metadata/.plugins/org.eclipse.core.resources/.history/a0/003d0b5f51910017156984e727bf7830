@@ -1,0 +1,14 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.dao;
+
+import java.util.List;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.Category;
+
+public class CategoryDaoImpl implements CategoryDao {
+
+	public List<Category> getAllCategories() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

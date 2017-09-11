@@ -1,0 +1,16 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.User;
+
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	UserDao userDao;
+	public User register(User user) {
+		// TODO Auto-generated method stub
+		userDao.register(user);
+	}
+
+}

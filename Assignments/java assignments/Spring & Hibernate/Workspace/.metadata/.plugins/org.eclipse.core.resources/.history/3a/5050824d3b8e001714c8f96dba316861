@@ -1,0 +1,19 @@
+package HibernateInheritenceTest.HibernateInheritence.singletable;
+
+import javax.persistence.Column;
+
+public class Bike extends Vehicle {
+
+	@Column(name="bikeName")
+	private String bikeName;
+
+	public Bike(double price, String bikeName) {
+		super(price);
+		this.bikeName = bikeName;
+	}
+
+	
+	
+}
+
+

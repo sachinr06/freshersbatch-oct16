@@ -1,0 +1,12 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.service;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.User;
+
+public class UserServiceImpl implements UserService{
+
+	public User register(User user) {
+		// TODO Auto-generated method stub
+		userDao.register(user);
+	}
+
+}

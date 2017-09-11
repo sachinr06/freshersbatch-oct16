@@ -1,0 +1,10 @@
+package HibernateInheritenceTest.HibernateInheritence.singletable;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(value="car")
+public class Car extends Vehicle{
+
+}

@@ -1,0 +1,68 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.dao;
+
+
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
+
+
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.User;
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.UserLogin;
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.UserSession;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.sql.Date;
+public class UserDaoImpl extends HibernateDaoSupport 
+	implements UserDao {
+
+	@Transactional
+	public User register(User user) {
+		 getHibernateTemplate().save(user);
+		User user2= getHibernateTemplate().load(User.class,user.getId());
+		return user2;
+	}
+
+	@Transactional
+	public UserSession loginUser(UserLogin authen) {
+		// TODO Auto-generated method stub
+		
+	 String user=authen.getUserName();
+	 String password=authen.getPassword();
+	
+List userDetails = getHibernateTemplate().find("select userName, password from User where userName=? AND password=?",user,password);
+
+System.out.println(userDetails);
+if(userDetails.isEmpty() ){
+	return null;
+	}
+	else{
+
+		 long millis=System.currentTimeMillis();  
+		 Date date = new Date(millis);
+		 UserSession usersession=new UserSession(user);
+		 usersession.setAuthid((usersession.generateauth()));
+		 usersession.setLastupdated(date);
+		 System.out.println(usersession);
+		 getHibernateTemplate().save(usersession);
+		 System.out.println(usersession);
+		 UserSession u2=getHibernateTemplate().load(UserSession.class,usersession.getSysid());
+		
+			return u2;
+	
+	}
+
+	}
+
+	public User getUser(String sessionId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+
+}
+

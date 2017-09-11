@@ -1,0 +1,5 @@
+package HibernateMappingTest.HibernateMapping;
+
+public class Employee {
+
+}

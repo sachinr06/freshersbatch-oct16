@@ -1,0 +1,16 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+public class UserLogin {
+
+	
+	
+	@Column(name="username")
+	private String userName;
+	
+	@Column(name="password")
+	private String password;
+	
+}

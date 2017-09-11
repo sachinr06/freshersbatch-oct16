@@ -1,0 +1,25 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.dao.AdvertisementDao;
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.Advertisement;
+
+public class AdvertisementServiceImpl implements AdvertisementService {
+
+	@Autowired
+	AdvertisementDao adDao;
+	public Advertisement postAd(Advertisement Ad, String sessionId) {
+		// TODO Auto-generated method stub
+			return adDao.postAd(Ad,sessionId);
+	}
+	public String search() {
+		// TODO Auto-generated method stub
+		return adDao.search();
+	}
+
+	
+}
+

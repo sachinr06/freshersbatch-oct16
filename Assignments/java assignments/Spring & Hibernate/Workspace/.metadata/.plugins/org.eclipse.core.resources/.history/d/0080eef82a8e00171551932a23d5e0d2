@@ -1,0 +1,94 @@
+package HibernateMappingTest.HibernateMapping;
+
+
+
+	import javax.persistence.CascadeType;
+	import javax.persistence.Column;
+	import javax.persistence.Entity;
+	import javax.persistence.FetchType;
+	import javax.persistence.GeneratedValue;
+	import javax.persistence.Id;
+	import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+	import javax.persistence.Table;
+
+
+	@Entity
+	@Table(name="EMPLOYEE")
+	public class Employee {
+
+		@Id
+		@GeneratedValue
+		@Column(name="id")
+		@ManyToOne(cascade={CascadeType.PERSIST}, fetch=FetchType.EAGER)
+		private Long employeeId;
+
+		public Long getEmployeeId() {
+			return employeeId;
+		}
+
+		public void setEmployeeId(Long employeeId) {
+			this.employeeId = employeeId;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public double getSal() {
+			return sal;
+		}
+
+		public void setSal(double sal) {
+			this.sal = sal;
+		}
+
+		public Long getMgr_id() {
+			return mgr_id;
+		}
+
+		public void setMgr_id(Long mgr_id) {
+			this.mgr_id = mgr_id;
+		}
+
+		@Column(name="name")
+		private String name;
+		
+		@Column(name="sal")
+		private double sal;
+
+		@OneToMany(cascade={CascadeType.PERSIST}, fetch=FetchType.EAGER)
+		@JoinColumn(name="mgr_id")
+		private Long mgr_id;
+
+		public Employee(Long employeeId, String name, double sal, Long mgr_id) {
+			super();
+			this.employeeId = employeeId;
+			this.name = name;
+			this.sal = sal;
+			this.mgr_id = mgr_id;
+		}
+
+		public Employee() {
+			super();
+		}
+
+		public Employee(String name, double sal, Long mgr_id) {
+			super();
+			this.name = name;
+			this.sal = sal;
+			this.mgr_id = mgr_id;
+		}
+
+
+		
+	}
+	
+
+

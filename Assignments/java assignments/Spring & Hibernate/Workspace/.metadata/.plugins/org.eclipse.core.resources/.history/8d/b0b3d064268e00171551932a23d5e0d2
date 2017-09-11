@@ -1,0 +1,123 @@
+package HibernateMappingTest.HibernateMapping;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class MAIN_N_N {
+
+	
+	public static void insertstudent(SessionFactory sessionFactory){
+		Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	Course c=new Course("JAVA");
+    	Course c2=new Course("C");
+    	Course c3=new Course("C++");
+    	Set<Course> s_courses=new HashSet<Course>();
+    	Set<Course> s2_courses=new HashSet<Course>();
+    	Set<Course> s3_courses=new HashSet<Course>();
+    	s_courses.add(c);
+    	s_courses.add(c2);
+    	s2_courses.add(c);
+    	s2_courses.add(c3);
+    	s3_courses.add(c3);
+    	s3_courses.add(c2);
+    	Student s=new Student("Sachin",s_courses);
+    	Student s2=new Student("Gopal",s2_courses);
+    	Student s3=new Student("Aniket",s3_courses);
+    	session.persist(s);
+    	session.persist(s2);
+    	session.persist(s3);
+    	tx.commit();
+    	session.close();
+		
+	}
+	
+public static void insertcourses(SessionFactory sessionFactory){
+	Session session =sessionFactory.openSession();
+	Transaction tx=session.beginTransaction();
+	Student s=new Student("Sachin");
+	Student s2=new Student("Aniket");
+	Student s3=new Student("Gopal");
+	
+	Set<Student> c_students=new HashSet<Student>();
+	Set<Student> c2_students=new HashSet<Student>();
+	Set<Student> c3_students=new HashSet<Student>();
+	c_students.add(s);
+	c_students.add(s2);
+	c2_students.add(s);
+	c2_students.add(s3);
+	c3_students.add(s2);
+	c3_students.add(s3);
+	Course c=new Course("JAVA",c_students);
+	Course c2=new Course("C",c_students);
+	Course c3=new Course("C++",c_students);
+	session.persist(c);
+	session.persist(c2);
+	session.persist(c3);
+	tx.commit();
+	session.close();
+		
+	}
+
+public static void updatestudents(SessionFactory sessionFactory){
+	Session session =sessionFactory.openSession();
+	Transaction tx=session.beginTransaction();
+	Student s=session.get(Student.class, 1L);
+	Set<Course> courses=s.getCourses();
+	s.setStudentName("Sachin C");
+	courses.add(new Course("J2EE"));
+	s.setCourses(courses);
+	tx.commit();
+	session.close();
+	
+}
+
+public static void updatecourses(SessionFactory sessionFactory){
+	Session session =sessionFactory.openSession();
+	Transaction tx=session.beginTransaction();
+	Course c=session.get(Course.class, 1L);
+	Set<Student> s=c.getStudents();
+	c.setCourseName("J2EE");
+	s.add(new Student("Swapnil"));
+	c.setStudents(sS);
+	tx.commit();
+	session.close();
+	
+}
+
+public static void removestudents(SessionFactory sessionFactory){
+	Session session =sessionFactory.openSession();
+	Transaction tx=session.beginTransaction();
+	Student s=session.get(Student.class, 1L);
+	session.delete(s);
+	tx.commit();
+	session.close();
+	
+}
+
+public static void removecourses(SessionFactory sessionFactory){
+	Session session =sessionFactory.openSession();
+	Transaction tx=session.beginTransaction();
+	Student s=session.get(Student.class, 1L);
+	session.delete(s);
+	tx.commit();
+	session.close();
+	
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Configuration configuration =new Configuration();
+    	configuration.configure("hibernate.cfg.xml");
+    	SessionFactory sessionFactory=configuration.buildSessionFactory();
+    	//insertstudent(sessionFactory);
+    	//updatestudents(sessionFactory);
+    	//removestudents(sessionFactory);
+	}
+
+}

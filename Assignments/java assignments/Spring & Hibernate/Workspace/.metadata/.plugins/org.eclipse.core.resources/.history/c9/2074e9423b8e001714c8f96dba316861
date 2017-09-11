@@ -1,0 +1,10 @@
+package HibernateInheritenceTest.HibernateInheritence.singletable;
+
+import javax.persistence.Column;
+
+public class Bike extends Vehicle {
+
+	@Column(name="bikeName")
+	private String bikeName;
+
+}

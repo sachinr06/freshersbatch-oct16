@@ -1,0 +1,13 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.dao;
+
+import java.util.List;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.Advertisement;
+
+public interface AdvertisementDao {
+	public Advertisement postAd(Advertisement Ad,String sessionId);
+
+	public String searchAll();
+
+	public String searchText(String text);
+}

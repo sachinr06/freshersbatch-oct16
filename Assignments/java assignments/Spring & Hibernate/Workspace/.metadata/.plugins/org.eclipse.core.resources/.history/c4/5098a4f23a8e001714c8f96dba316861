@@ -1,0 +1,29 @@
+package HibernateInheritenceTest.HibernateInheritence.singletable;
+
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(value="car")
+public class Car extends Vehicle{
+
+	@Column(name="id")
+	private String name;
+
+	public Car(double price,String name) {
+		super(price);
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
+}

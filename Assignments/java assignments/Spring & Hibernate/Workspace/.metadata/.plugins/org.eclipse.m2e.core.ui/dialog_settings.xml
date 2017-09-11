@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="D:\Spring\Workspace\FirstHibernateDemo"/>
+			<item value="D:\Spring\Workspace\FirstHibernateDemo\src\main\java"/>
+			<item value="D:\Spring\Workspace\SpringMongoTest"/>
+			<item value="D:\Spring\Workspace\SpringAOP"/>
+			<item value="D:\Spring\Workspace\SpringProject"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="SpringHibernateApplicationTest.SpringHibernateApplication"/>
+			<item value="SpingHibernateTest.SpingHibernate"/>
+			<item value="HibernateCachingTest"/>
+			<item value="HibernateCachingTest.HibernateCaching"/>
+			<item value="HibernateMappingTest.HibernateMapping"/>
+			<item value="HibernateTest.FirstHibernateDemo"/>
+			<item value="SpringMongoRestTest.SpringMongoTest"/>
+			<item value="SpringMongoRestProject.SpringMongo"/>
+			<item value="SpringAOPProject.SpringAOP"/>
+			<item value="SpringAOPProject.StringAOP"/>
+		</list>
+		<list key="groupId">
+			<item value="SpringHibernateApplicationTest"/>
+			<item value="SpingHibernateTest"/>
+			<item value="HibernateCachingTest"/>
+			<item value="HibernateMappingTest"/>
+			<item value="HibernateTest"/>
+			<item value="SpringMongoRestTest"/>
+			<item value="SpringMongoRestProject"/>
+			<item value="SpringAOPProject"/>
+		</list>
+		<list key="artifactId">
+			<item value="SpringHibernateApplication"/>
+			<item value="SpingHibernate"/>
+			<item value="HibernateCaching"/>
+			<item value="HibernateMapping"/>
+			<item value="FirstHibernateDemo"/>
+			<item value="SpringMongoTest"/>
+			<item value="SpringMongo"/>
+			<item value="SpringAOP"/>
+			<item value="StringAOP"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

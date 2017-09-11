@@ -1,0 +1,10 @@
+package HibernateMappingTest.HibernateMapping;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TEMPEMP")
+public class Tempemp {
+
+}

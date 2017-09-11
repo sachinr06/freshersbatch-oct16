@@ -1,0 +1,14 @@
+package HibernateInheritenceTest.HibernateInheritence.tableperclass;
+
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.Table;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Table(name="EMPLOYEE")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public class Vehicle {
+
+	
+}

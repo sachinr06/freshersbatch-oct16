@@ -1,0 +1,30 @@
+package HibernateMappingTest.HibernateMapping;
+
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="stock")
+public class Stock {
+
+	@Id
+	@GeneratedValue
+	@Column(name="id")
+	private Long id;
+
+	@Column(name="name")
+	private String name;
+	
+	@Column(name="price")
+	private double price;
+	
+	
+	@Column(name="market_id")
+	List<Market> markets;
+
+}

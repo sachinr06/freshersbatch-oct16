@@ -1,0 +1,25 @@
+package HibernateInheritenceTest.HibernateInheritence.tablepersubclass;
+
+import javax.persistence.Column;
+
+@Entity
+@Table(name="CAR")
+@PrimaryKeyJoinColumn(name="ID")
+public class Car extends Vehicle{
+
+	@Column(name="carName")
+	private String carName;
+
+	public Car(double price,String carName) {
+		super(price);
+		this.carName = carName;
+	}
+
+	public String getCarName() {
+		return carName;
+	}
+
+	public void setcarName(String name) {
+		this.carName = carName;
+	}
+}

@@ -1,0 +1,40 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.entity;
+
+import java.util.Random;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="advertisements")
+public class Advertisement {
+
+
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
+	@Column(name="id")
+	private Long id;
+	
+	@Column(name="title")
+	private String title;
+	
+	@Column(name="name")
+	private String name;
+	
+	@Column(name="category")
+	private String category;
+	
+	
+	@Column(name="description")
+	private String description;
+
+	
+	
+	
+	
+
+}

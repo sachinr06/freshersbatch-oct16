@@ -1,0 +1,29 @@
+package HibernateMappingTest.HibernateMapping;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class MAIN_1_N {
+	
+	public static void main(String args[]){
+
+	Configuration configuration2 =new Configuration();
+	configuration2.configure("hibernate.cfg.xml");
+	SessionFactory sessionFactory2=configuration2.buildSessionFactory();
+	Session session5 =sessionFactory2.openSession();
+	Transaction tx=session5.beginTransaction();
+	Stock stock=new Stock("abc",100);
+	Stock stock2=new Stock("xyz",120);
+	List<Stock> stocks_mar=new ArrayList<Stock>();
+	Market market=new Market("bardi","Nagpur",stocks_mar);
+	session5.persist(market);
+	session5.close();
+	
+
+	}
+}

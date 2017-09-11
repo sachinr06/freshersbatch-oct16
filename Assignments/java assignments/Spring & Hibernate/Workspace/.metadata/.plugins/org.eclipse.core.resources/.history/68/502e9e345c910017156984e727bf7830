@@ -1,0 +1,14 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.service;
+
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.Advertisement;
+
+public class AdvertisementServiceImpl implements AdvertisementService {
+
+	public Advertisement postAd(Advertisement Ad, String sessionId) {
+		// TODO Auto-generated method stub
+
+	}
+
+	
+}
+

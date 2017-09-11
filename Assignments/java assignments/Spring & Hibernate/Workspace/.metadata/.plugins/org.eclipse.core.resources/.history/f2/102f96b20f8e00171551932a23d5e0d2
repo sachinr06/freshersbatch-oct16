@@ -1,0 +1,118 @@
+package HibernateMappingTest.HibernateMapping;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="ADDRESS")
+public class Address {
+	@Id
+	@GeneratedValue
+	@Column(name="id")
+	private Long id;
+	
+	@Column(name="block")
+	private long block;
+	
+	@Column(name="area")
+	private String area;
+	
+	
+	@Column(name="city")
+	private String city;
+	
+	
+	
+	@Column(name="pos")
+	private double pos;
+
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+	public long getBlock() {
+		return block;
+	}
+
+
+
+	public void setBlock(long block) {
+		this.block = block;
+	}
+
+
+
+	public String getArea() {
+		return area;
+	}
+
+
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+
+	public double getPos() {
+		return pos;
+	}
+
+
+
+	public void setPos(double pos) {
+		this.pos = pos;
+	}
+
+
+
+	public Profile(Long id, long block, String area, String city, double pos) {
+		super();
+		this.id = id;
+		this.block = block;
+		this.area = area;
+		this.city = city;
+		this.pos = pos;
+	}
+
+
+
+	public Profile() {
+		super();
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Profile [id=" + id + ", block=" + block + ", area=" + area + ", city=" + city + ", pos=" + pos + "]";
+	}
+
+
+	
+
+}

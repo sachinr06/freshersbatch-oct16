@@ -1,0 +1,5 @@
+package HibernateInheritenceTest.HibernateInheritence.singletable;
+
+public class Bike {
+
+}

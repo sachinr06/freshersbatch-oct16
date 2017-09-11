@@ -1,0 +1,62 @@
+package HibernateMappingTest.HibernateMapping;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class MAIN_N_N {
+
+	
+	public static void insertstudent(SessionFactory sessionFactory){
+		Session session =sessionFactory.openSession();
+    	Transaction tx=session.beginTransaction();
+    	Course c=new Course("JAVA");
+    	Course c2=new Course("C");
+    	Course c3=new Course("C++");
+    	Set<Course> s_courses=new HashSet<Course>();
+    	Set<Course> s2_courses=new HashSet<Course>();
+    	Set<Course> s3_courses=new HashSet<Course>();
+    	s_courses.add(c);
+    	s_courses.add(c2);
+    	s2_courses.add(c);
+    	s2_courses.add(c3);
+    	s3_courses.add(c3);
+    	s3_courses.add(c2);
+    	Student s=new Student("JAVA",s_courses);
+    	Student s2=new Student("C",s2_courses);
+    	Student s3=new Student("C++",s3_courses);
+    	
+    	tx.commit();
+    	session.close();
+		
+	}
+	
+public static void insertcourses(SessionFactory sessionFactory){
+	Session session =sessionFactory.openSession();
+	Transaction tx=session.beginTransaction();
+	Student s=new Student("Sachin");
+	Student s2=new Student("Aniket");
+	Student s3=new Student("Gopal");
+	
+	Set<Student> c_students=new HashSet<Student>();
+	Set<Student> c2_students=new HashSet<Student>();
+	Set<Student> c3_students=new HashSet<Student>();
+	Course c=new Course("Sachin",c_students);
+	Course c2=new Course("Aniket",c_students);
+	Course c3=new Course("Gopal",c_students);
+	tx.commit();
+	session.close();
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Configuration configuration =new Configuration();
+    	configuration.configure("hibernate.cfg.xml");
+    	SessionFactory sessionFactory=configuration.buildSessionFactory();
+	}
+
+}

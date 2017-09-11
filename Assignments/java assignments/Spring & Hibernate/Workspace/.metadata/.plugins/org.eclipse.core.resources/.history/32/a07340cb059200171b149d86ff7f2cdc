@@ -1,0 +1,70 @@
+package SpringHibernateApplicationTest.SpringHibernateApplication.dao;
+
+
+import java.util.List;
+
+import javax.persistence.Query;
+
+import org.hibernate.SQLQuery;
+import org.json.JSONObject;
+//import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.Advertisement;
+import SpringHibernateApplicationTest.SpringHibernateApplication.entity.User;
+
+
+public class AdvertisementDaoImpl  extends HibernateDaoSupport implements AdvertisementDao{
+
+	@Transactional
+	public Advertisement postAd(Advertisement Ad, String sessionId) {
+		if(sessionId !=null){
+			System.out.println(Ad);
+			 getHibernateTemplate().save(Ad);
+			return Ad;
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	public String searchAll() {
+		// TODO Auto-generated method stub
+		List ads=(List<Advertisement>) getHibernateTemplate().find("from Advertisement");
+		System.out.println(ads);
+		JSONObject advertiseList=new JSONObject();
+		JSONObject json=new JSONObject();
+		advertiseList.put("advertiseList", ads);
+		json.put("data", advertiseList);
+		return json.toString();
+		
+	}
+
+	public String searchText(String text) {
+		// TODO Auto-generated method stub
+	//
+		/* final String query = "select * from adverisements where name like %?% OR  title like %?% OR description like %?%";
+		  
+		    SQLQuery q = getHibernateTemplate().getSessionFactory().openSession().createSQLQuery(query);
+		    q.setParameter(0, text);
+		    q.setParameter(1, text);
+		    q.setParameter(2, text);
+		    q.executeUpdate();*/
+		List ads=(List<Advertisement>) getHibernateTemplate().find("from Advertisement title like ?",text);
+		
+		   // List ads=q.list();
+		JSONObject advertiseList=new JSONObject();
+		JSONObject json=new JSONObject();
+		advertiseList.put("advertiseList", ads);
+		json.put("data", advertiseList);
+		return json.toString();
+	}
+
+	public String viewAd(Long postId) {
+		// TODO Auto-generated method stub
+		List adlist=getHibernateTemplate().find("from Advertisement");
+		Advertisement ad=(Advertisement) adlist.get(0);
+	}
+
+}
